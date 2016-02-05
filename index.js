@@ -12,7 +12,7 @@ module.exports.pitch = function(req) {
 	if(this.target == "web") {
 		source.push("require(" + JSON.stringify("!!" + path.join(__dirname, "web.js")) + ");");
 		source.push("mocha.setup(" + JSON.stringify(query["interface"] || "bdd") + ");");
-		source.push("require(" + JSON.stringify("!!" + req) + ")");
+		source.push("module.exports = require(" + JSON.stringify("!!" + req) + ")");
 		source.push("require(" + JSON.stringify("!!" + path.join(__dirname, "start.js")) + ");");
 		source.push("if(module.hot) {");
 		source.push("\tmodule.hot.accept();");
